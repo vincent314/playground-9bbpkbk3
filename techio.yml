@@ -1,4 +1,9 @@
-title: Simple Kotlin Template
+title: Formation Kotlin
 plan:
-- title: Kotlin Snippet
-  statement: statement.md
+- title: Introduction à Kotlin
+  statement: introduction.md
+
+projects:
+  kotlin-training:
+    root: /kotlin-project
+    runner: techio/kotlin-maven3-junit4-runner:1.0.6-kotlin-1.1.50
