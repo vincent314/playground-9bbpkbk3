@@ -4,6 +4,8 @@ plan:
   statement: /markdowns/introduction.md
 - title: Les bases de Kotlin
   statement: /markdowns/basics.md
+- title: Les Classes et les objets
+  statement: /markdowns/classes.md
 
 projects:
   kotlin-training:
