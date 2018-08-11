@@ -1,7 +1,9 @@
 title: Formation Kotlin
 plan:
 - title: Introduction à Kotlin
-  statement: introduction.md
+  statement: /markdowns/introduction.md
+- title: Les bases de Kotlin
+  statement: /markdowns/basics.md
 
 projects:
   kotlin-training:
