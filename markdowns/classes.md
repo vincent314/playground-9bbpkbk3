@@ -96,3 +96,143 @@ fun  main(args:Array<String>) {
     println(d)
 }
 ```
+
+## Data classes
+
+En plus des accesseurs, Kotlin peut générer les méthodes `equals`, `hashcode`, `toString` et `clone`, bien pratiques pour
+les classes de modèle ou **data classes**. C'est une fonctionnalité très similaire à l'annotation `@Data` de **Lombok**
+
+```kotlin runnable
+data class Person( var firstName:String, var lastName:String, var userCode:String)
+
+fun main(vararg args:String){
+    val john = Person("John", "Doe", "123456")
+    println(john)
+    val jane = john.copy(firstName = "Jane", userCode="67890")
+    println(jane)
+
+    println(john == Person("John", "Doe", "123456"))
+}
+```
+
+**Attention** : Les attributs pris en compte dans ces méthodes sont ceux déclarés dans le constructeur par défaut.
+
+```kotlin
+data class Person( var firstName:String, var lastName:String, var birthDate:Date)
+
+
+```
+
+## Interface
+
+Comme en Java, les interfaces sont des prototype de classe sans implémentation.
+
+```kotlin
+interface IDisplay{
+    fun getSize(): Pair<Int,Int>
+}
+
+class Display:IDisplay,Serializable{
+    override fun getSize(): Pair<Int, Int> {
+        TODO("not implemented")
+    }
+}
+```
+
+## Object et Singleton
+
+Kotlin supporte nativement (et thread-safe) la création d'une instance unique d'une classe avec le mot-clé `object`.
+
+```kotlin runnable
+object Singleton{
+    var value:Int = 42
+}
+
+fun main(vararg args:String) {
+    println(Singleton.value)
+    Singleton.value = 999
+    println(Singleton.value)
+}
+```
+
+On utilise aussi `object` pour créer des classes anonymes.
+
+```kotlin runnable
+interface IService {
+    fun doSomething()
+}
+
+fun main(vararg args: String) {
+    val anonymousClazz = object : IService {
+        override fun doSomething() {
+            println("Hello there !")
+        }
+    }
+    anonymousClazz.doSomething()
+}
+``` 
+
+## Companion objects
+
+La notion de `static` en Java est remplacée par la notion de `companion object` en Kotlin. Pour rendre *statiques* des attributs
+ou des méthodes, on les encapsule dans un object singleton associé à la classe
+
+```kotlin runnable
+class HasStaticMembers {
+    companion object {
+        fun doSomething(){
+            println("Hello companion !")
+        }
+    }
+}
+
+fun main(vararg args:String){
+    HasStaticMembers.doSomething()
+}
+```
+
+Cependant, depuis Java (voir la décompilation de la classe), l'appel devra se faire ainsi `HasStaticMembers.Companion.doSomething()`. 
+Pour les utilisateurs Java de votre librairie, ajoutez l'annotation `@JvmStatic` à vos membres statiques `HasStaticMembers.doSomething()` 
+
+**Exercice** : Comparer les deux versions Java générées avec ou sans `@JvmStatic`
+
+## Fonctions d'extension
+
+Sans avoir à créer une nouvelle classe pour étendre la liste de méthodes d'une classe, nous pouvons créer des **fonctions d'extension**.
+
+```kotlin runnable
+// { autofold
+import java.time.Instant
+import java.time.LocalDate
+import java.time.ZoneId
+// }
+
+fun Date.toLocalDate(): LocalDate = Instant.ofEpochMilli(this.time).atZone(ZoneId.systemDefault()).toLocalDate()
+
+fun main(vararg args:String){
+    println(Date().toLocalDate())
+}
+``` 
+
+## Fonctions infix
+
+Les méthodes ou les fonctions d'extension à **un seul paramètre strictement et taggées** `infix`, peuvent être appelées un notation spéciales : sans point ni paranthèses !
+
+```kotlin runnable
+class Person(val name:String) {
+    var marriedTo:Person? = null
+
+    infix fun marry(to: Person) {
+        this.marriedTo = to
+        to.marriedTo = this
+    }
+}
+
+fun main(vararg args:String){
+    val john = Person("John")
+    val bob = Person("Bob")
+
+    john marry bob
+    println("John is married to ${john.marriedTo?.name}")
+}
+```

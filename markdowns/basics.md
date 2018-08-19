@@ -99,6 +99,18 @@ fun  main(args:Array<String>) {
 }
 ```
 
+## Cast et Smartcast
+
+Nous pouvons forcer le type d'une valeur avec l'opérateur `as` (unsafe cast operator) ou l'opérateur `as?` (safe cast operator).
+
+```kotlin runnable
+fun main(vararg args:String) {
+    val value:Any = "CONTENT"
+    println((value as String).length)
+    println((value as? Int)?.plus(8))
+}
+```
+
 ## Égalité
 
 L'opérateur `==` (double-égale) prend le sens du `.equals()` de Java.
