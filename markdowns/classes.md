@@ -199,6 +199,7 @@ Pour les utilisateurs Java de votre librairie, ajoutez l'annotation `@JvmStatic`
 ## Fonctions d'extension
 
 Sans avoir à créer une nouvelle classe pour étendre la liste de méthodes d'une classe, nous pouvons créer des **fonctions d'extension**.
+Au sein de cette **fonction d'extension**, nous avons accès aux attributs membres de la classe en passant par la variable `this`
 
 ```kotlin runnable
 // { autofold
@@ -216,7 +217,7 @@ fun main(vararg args:String){
 
 ## Fonctions infix
 
-Les méthodes ou les fonctions d'extension à **un seul paramètre strictement et taggées** `infix`, peuvent être appelées un notation spéciales : sans point ni paranthèses !
+Les méthodes ou les fonctions d'extension à **un seul paramètre strictement et taggées** `infix`, peuvent être appelées avec une notation spéciales : sans point ni paranthèses !
 
 ```kotlin runnable
 class Person(val name:String) {
@@ -236,3 +237,38 @@ fun main(vararg args:String){
     println("John is married to ${john.marriedTo?.name}")
 }
 ```
+
+## Lamda avec récepteur
+
+Le principe de base est une fonction d'extension passée en paramètre d'une méthode. En schématisant, la signature ressemble alors à ça 
+`Receiver.(In) -> Out`.
+
+Avec cette fonctionnalité, on s'approche de la puissance du language Kotlin pour la réalisation de **DSL (Domain Spécific Language)**.
+
+La **lamdba avec récepteur** la plus connue, fournie par le language, est `apply` avec l'implémentation suivante :
+
+```kotlin
+public inline fun <T> T.apply(block: T.() -> Unit): T { block(); return this }
+```
+
+* C'est une fonction d'extension générique qui prend en paramètre une fonction d'extension sur le même *receiver* `T`
+* Elle est disponible pour tous les types d'objet
+* Son implémentation exécute juste la lambda fournie.
+* Elle retourne l'objet récepteur
+
+```kotlin runnable
+fun main(vararg args: String) {
+    println(
+            StringBuilder("One to ten = ")
+                    .apply { // this:StringBuilder
+                        // code arbitraire …
+                        for (i in 1..10) {
+                            append(i)
+                            append(" ")
+                        }
+                    }.toString()
+    )
+}
+```
+
+## Scoped functions
