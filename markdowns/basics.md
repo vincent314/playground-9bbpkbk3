@@ -8,7 +8,7 @@ La syntaxe est très inspirée de Java, avec toutefois quelques particularités 
 - pas de `;`
 - déclaration de variables avec `val` / `var`
 - déclaration des fonctions avec `fun`
-- les fonctions sont des **entités de première classe**
+- les fonctions sont des **entités de première classe**, au même titre que les classes
 - pas de `new` pour appeler un constructeur
 - les expressions de contrôle varient un peu
 - contrôle natif des types nullables
@@ -308,6 +308,6 @@ s'il est divisible à la fois par 3 et par 5.
 
 ```kotlin runnable
 fun  main(args:Array<String>) {
-    TODO("Écrire le code ici")
+    TODO("FizzBuzz implementation")
 }
 ```

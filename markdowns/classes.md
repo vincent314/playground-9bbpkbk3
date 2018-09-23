@@ -206,6 +206,7 @@ Au sein de cette **fonction d'extension**, nous avons accès aux attributs membr
 import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneId
+import java.util.Date
 // }
 
 fun Date.toLocalDate(): LocalDate = Instant.ofEpochMilli(this.time).atZone(ZoneId.systemDefault()).toLocalDate()
@@ -237,6 +238,16 @@ fun main(vararg args:String){
     println("John is married to ${john.marriedTo?.name}")
 }
 ```
+
+De nombreuses fonction d'extension existent dans le language et dans les nombreuses librairies Kotlin. `to` est probablement la plus connue et utilisée.
+Elle permet de créer un objet `Pair` (de la bibliothèque Kotlin), un tuple associant 2 valeurs.
+
+```kotlin
+fun main(vararg args:String){
+    val first: Pair<Int,String> = 1 to "First"
+    println( first == Pair(1, "First")) // true
+}
+``` 
 
 ## Lamda avec récepteur
 
@@ -272,3 +283,113 @@ fun main(vararg args: String) {
 ```
 
 ## Scoped functions
+
+Kotlin fournit quelques *fonctions d'extensions* à toutes les objets, très pratiques en facilitant l'écriture et permettant l'enchainement de fonctions :
+`apply` (vue précédemment), `let`, `run`, `also` et `with`.
+
+Ces fonctions apportent un objet arbitraire dans un nouveau contexte. Cet objet de contexte est accesible par `it` (ou autre nom défini) ou par `this`.
+Sur le principe, ces *scoped functions* se ressemblent beaucoup malgré leurs noms déroutants , avec toutefois quelques subtilités …
+
+### let
+
+[Documentation](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/let.html)
+
+```kotlin 
+public inline fun <T, R> T.let(block: (T) -> R): R
+``` 
+
+* `let` applique un traitement (lambda) sur un objet `T` et retourne un résultat de transformation `R`
+* `let` remplace avantageusement les tests idiomatiques `if(object == null)`
+
+```kotlin
+val mapped = value?.let { transform(it) } ?: defaultValue
+```
+
+### run
+
+[Documentation](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/run.html)
+
+```kotlin
+inline fun <T, R> T.run(block: T.() -> R): R
+```
+
+* `run` est sensiblement identique à `let` à l'exception du paramètre *lamdba avec récepteur*. L'accès
+à l'objet contexte par `this`.
+
+### also
+
+[Documentation](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/also.html)
+
+```kotlin
+inline fun <T> T.also(block: (T) -> Unit): T
+```
+
+* `also` permet d'appliquer un traitement sur un objet `T`. À la différence de `let` et `run`, `also` retourne forcément l'objet cible.
+* il est très pratique par exemple pour l'initialisation d'objets sans passer par des builders
+
+Par exemple :
+
+```kotlin
+fun buildWorkspace():Workspace {
+    val workspace = Workspace()
+    workspace.name = "Custom Workspace"
+    workspace.init()
+    return workspace
+}
+``` 
+
+devient :
+
+```kotlin
+fun buildWorkspace() = Workspace()
+    .also { 
+        it.name = "Custom Workspace"
+        it.init() 
+    }
+```
+
+### apply
+
+[Documentation](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/apply.html)
+
+```kotlin
+inline fun <T> T.apply(block: T.() -> Unit): T
+```
+
+* `apply` est comme `also`, mais avec une *lambda avec récepteur*, ce qui veut dire que l'objet cible est accessible par `this`
+
+exemple :
+
+```kotlin
+fun buildWorkspace() = Workspace()
+    .apply { 
+        name = "Custom Workspace"
+        init() 
+    }
+```
+
+### with
+
+[Documentation](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/with.html)
+
+```kotlin
+inline fun <T, R> with(receiver: T, block: T.() -> R): R
+```
+
+* `with` permet de choisir le context `this` et d'isoler une série de variables dans un bloc de code
+
+```kotlin runnable
+// { autofold
+import java.io.StringWriter
+import kotlin.math.PI
+import kotlin.math.cos
+// }
+
+fun main(vararg args:String){
+    println(with(StringWriter()){
+        val result = cos(PI / 4)
+        append("cos(π/4)=")
+        append(result.toString())
+    })
+}
+```
