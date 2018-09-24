@@ -6,6 +6,8 @@ plan:
   statement: /markdowns/basics.md
 - title: Les Classes et les objets
   statement: /markdowns/classes.md
+- title: Les collections
+  statement: /markdowns/collections.md
 
 projects:
   kotlin-training:

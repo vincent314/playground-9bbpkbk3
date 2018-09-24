@@ -117,11 +117,20 @@ fun main(vararg args:String){
 
 **Attention** : Les attributs pris en compte dans ces méthodes sont ceux déclarés dans le constructeur par défaut.
 
-```kotlin
-data class Person( var firstName:String, var lastName:String, var birthDate:Date)
+```kotlin runnable
+data class Person(var firstName: String, var lastName: String) {
+    var id: String? = null
+}
 
 
+fun main(vararg args: String) {
+    val john = Person("John", "Doe")
+            .apply { id = "123456" }
+    println(john)
+}
 ```
+
+C'est une manière d'ignorer certains champs (dans le cas de boucle par exemple A <--> B).
 
 ## Interface
 
@@ -394,3 +403,6 @@ fun main(vararg args:String){
     })
 }
 ```
+
+## Alias
+
