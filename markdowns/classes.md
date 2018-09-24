@@ -376,6 +376,7 @@ fun buildWorkspace() = Workspace()
 inline fun <T, R> with(receiver: T, block: T.() -> R): R
 ```
 
+* `with` contrairement aux autres, n'est pas une fonction d'extension
 * `with` permet de choisir le context `this` et d'isoler une série de variables dans un bloc de code
 
 ```kotlin runnable

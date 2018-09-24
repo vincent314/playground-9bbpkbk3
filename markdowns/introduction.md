@@ -1,16 +1,23 @@
 # Introduction
 
-## Hello Kotlin
+## println("Hello Kotlin")
 
-En guise d'accueil dans cette formation, commençons pas le traditionnel **Hello World**
+**Kotlin** est un language développé par les équipes de **JetBrains** et dont le nom fait référence à une île en face de St Peterbourg.
 
-```kotlin runnable
-fun main(args: Array<String>) {
-    println("Hello, World!")
-}
-```
+Même si Kotlin est surtout un language de la JVM, au même titre que **JAVA**, **Scala**, **Groovy** ou **Closure** il cible désormais le Javascript (transpilation) et le natif (avec LLVM).
 
-## Syntaxe
+* **compatible JVM 6+**
+* *first class language* pour **Android**
+* produit des fichiers `.class` pour la JVM, mix Java / Kotlin
+* **intégration** parfaite dans les projets Java : SpringFramework, Maven, Gradle
+* **IDE support** : IntelliJ, Android Studio
+
+## E=mc² : Errors = More Code²
+
+* Kotlin est un language à **typage statique** (comme Java)
+* **les fonctions** sont des éléments de premiers plan (au même niveau que les classes)
+* **les fonctionnalités de base** de Kotlin recouvrent celles de librairies JAVA puissantes comme *Lombok*, *VAVR* ou *Guava*.
+* Stabilité (gestion des **null**, typage …) et performance (inline functions, collections immutables, …)
 
 La syntaxe est plus riche que la syntaxe Java ou Javascript avec de nombreux nouveaux mots clés : `is`, `as`, `override`, `by`, `when` …
 Pas de panic, il est toujours possible d'utiliser la syntaxe ```` s'il y a un conflit avec vos variables.
@@ -20,7 +27,7 @@ de programmation usuels (singletons, data classes, délégation, programmation f
 
 Le code Kotlin, dépourvu du code superflux, est plus condensé et plus lisible par rapport à Java.
 
-Si on est curieux, on peut visualiser le code équivalent JAVA (Kotlin -> Bytecode -> JAVA)
+Si on est curieux, on peut **visualiser le code équivalent JAVA** (Kotlin -> Bytecode -> JAVA)
 
 ## Pour tester Kotlin
 
@@ -28,6 +35,7 @@ Si on est curieux, on peut visualiser le code équivalent JAVA (Kotlin -> Byteco
 - IntelliJ
 - [https://try.kotlinlang.org](https://try.kotlinlang.org)
 - Kotlin REPL (dans IntelliJ Tools -> Kotlin -> Kotlin REPL)
+- [Projet Java starter](https://github.com/vincent314/kotlin-starter-project) 
 
 ## Quizz
 
