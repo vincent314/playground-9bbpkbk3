@@ -1,5 +1,12 @@
 # Introduction
 
+## Prérequis
+
+Pour bien apréhender ce cours, il est nécessaire de connaître **Java**. Il fera référence à de nombreuses fonctionnalités
+Java sur lesquelles nous ne rentrerons pas dans le détail.
+
+Il est fortement recommandé d'utiliser l'IDE **IntelliJ** avec l'excellent plugin Kotlin qui apportera le meilleur support possible du language.
+
 ## println("Hello Kotlin")
 
 **Kotlin** est un language développé par les équipes de **JetBrains** et dont le nom fait référence à une île en face de St Peterbourg.
