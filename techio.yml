@@ -8,6 +8,8 @@ plan:
   statement: /markdowns/classes.md
 - title: Les collections
   statement: /markdowns/collections.md
+- title: Exercices
+  statement: /markdowns/exercices.md
 
 projects:
   kotlin-training:
