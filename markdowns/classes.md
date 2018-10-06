@@ -251,12 +251,73 @@ fun main(vararg args:String){
 De nombreuses fonction d'extension existent dans le language et dans les nombreuses librairies Kotlin. `to` est probablement la plus connue et utilisée.
 Elle permet de créer un objet `Pair` (de la bibliothèque Kotlin), un tuple associant 2 valeurs.
 
-```kotlin
+```kotlin runnable
 fun main(vararg args:String){
     val first: Pair<Int,String> = 1 to "First"
     println( first == Pair(1, "First")) // true
 }
-``` 
+```
+
+## Surcharge d'opérateurs
+
+Avec le mot clé `operator`, nous pouvons surcharger les opérateurs usuels pour les utiliser avec nos propres classes, 
+en implémentant les méthodes suivantes :
+
+### opérateurs unaires
+
+- `inc` : `a++`
+- `dec` : `a--` 
+
+### opérateurs binaires
+
+- `plus` : `a + b`
+- `minus` : `a - b`
+- `times` : `a * b`
+- `div` : `a / b`
+- `rem` : `a % b`
+- `rangeTo` : `a..b`
+- `contains` : `a in b`
+
+exemple :
+
+```kotlin runnable
+data class Ship(var fuel:Int = 0){
+    operator fun plus(value:Int){
+        this.fuel += value
+    }
+    operator fun minus(value:Int){
+        this.fuel -= value
+    }
+}
+
+operator fun Ship.dec():Ship{
+    this.fuel--
+    return this
+}
+
+fun main(vararg args:String){
+    var ship = Ship()
+    println(ship) // expect fuel = 0
+    ship + 50
+    println(ship) // expect fuel = 50
+    ship - 10
+    println(ship) // expect fuel = 40
+    ship--  // ship reassigned
+    println(ship) // expect fuel = 39
+    println(--ship) // expect fuel = 38
+}
+```
+
+exemple : LocalDate + Period
+
+```kotlin runnable
+import java.time.LocalDate
+import java.time.Period
+
+fun main(vararg args:String){
+    println(LocalDate.parse("2017-12-31") + Period.ofDays(1)) // 2018-01-01
+} 
+```
 
 ## Lamda avec récepteur
 
