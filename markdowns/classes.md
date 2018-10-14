@@ -79,7 +79,7 @@ fun main(args:Array<String>){
 
 ## Héritage
 
-Pour qu'une classe hérite d'une classe parente, cette dernière doit être taggé `open` (les classes sont `final` par défaut)
+**les classes sont `final` par défaut.** Pour qu'une classe hérite d'une classe parente, cette dernière doit être taggé `open
 
 ```kotlin runnable
 open class Mother{
@@ -100,7 +100,8 @@ fun  main(args:Array<String>) {
 ## Data classes
 
 En plus des accesseurs, Kotlin peut générer les méthodes `equals`, `hashcode`, `toString` et `clone`, bien pratiques pour
-les classes de modèle ou **data classes**. C'est une fonctionnalité très similaire à l'annotation `@Data` de **Lombok**
+les classes de modèle ou **data classes**. C'est une fonctionnalité très similaire à l'annotation `@Data` de **Lombok**.
+Attention: les data classes fonctionnent mal avec l'héritage, 
 
 ```kotlin runnable
 data class Person( var firstName:String, var lastName:String, var userCode:String)
@@ -467,3 +468,12 @@ fun main(vararg args:String){
 
 ## Alias
 
+## Exercice StarTrek
+
+Créer le modèle métier suivant :
+
+![startrek](Startrek.png)
+
+Construire un Univers avec le vaisseau **Enterprise** et faites le déplacer de la planète **Terre** vers la planète **Vulcain**.
+
+*Logger* cette information lors du déplacement (`println`). 

@@ -11,6 +11,9 @@ Il est fortement recommandé d'utiliser l'IDE **IntelliJ** avec l'excellent plug
 
 **Kotlin** est un language développé par les équipes de **JetBrains** et dont le nom fait référence à une île en face de St Peterbourg.
 
+* language pragmatique : lisibilité, réutilisabilité, interoperabilité, sécurisé et outillé
+* language pour l'industrie
+
 Même si Kotlin est surtout un language de la JVM, au même titre que **JAVA**, **Scala**, **Groovy** ou **Closure** il cible désormais le Javascript (transpilation) et le natif (avec LLVM).
 
 * **compatible JVM 6+**
@@ -43,12 +46,3 @@ Si on est curieux, on peut **visualiser le code équivalent JAVA** (Kotlin -> By
 - [https://try.kotlinlang.org](https://try.kotlinlang.org)
 - Kotlin REPL (dans IntelliJ Tools -> Kotlin -> Kotlin REPL)
 - [Projet Java starter](https://github.com/vincent314/kotlin-starter-project) 
-
-## Quizz
-
-?[Avec Kotlin, on peut générer :]
-- [ ] du Java
-- [X] du Javascript
-- [ ] du CSS
-- [X] du code natif
-- [X] du bytecode JVM
