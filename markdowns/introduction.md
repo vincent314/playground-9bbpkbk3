@@ -11,7 +11,7 @@ Il est fortement recommandé d'utiliser l'IDE **IntelliJ** avec l'excellent plug
 
 **Kotlin** est un language développé par les équipes de **JetBrains** et dont le nom fait référence à une île en face de St Peterbourg.
 
-* language pragmatique : lisibilité, réutilisabilité, interoperabilité, sécurisé et outillé
+* language pragmatique : **lisibilité**, **réutilisabilité**, **interoperabilité**, **sécurisé** et **outillé**
 * language pour l'industrie
 
 Même si Kotlin est surtout un language de la JVM, au même titre que **JAVA**, **Scala**, **Groovy** ou **Closure** il cible désormais le Javascript (transpilation) et le natif (avec LLVM).
@@ -41,8 +41,16 @@ Si on est curieux, on peut **visualiser le code équivalent JAVA** (Kotlin -> By
 
 ## Pour tester Kotlin
 
-- [https://tech.io](https://tech.io)
-- IntelliJ
-- [https://try.kotlinlang.org](https://try.kotlinlang.org)
+- [https://tech.io](https://tech.io) Tester Kotlin dans ce tutoriel
+- [IntelliJ CE / Ultimate](https://www.jetbrains.com/idea/download/), [Android Studio](https://developer.android.com/studio/)
+- [https://play.kotlinlang.org](https://play.kotlinlang.org) Editer et exécuter du code Kotlin
+- [https://try.kotlinlang.org](https://try.kotlinlang.org) Tutoriaux et exercices en ligne
 - Kotlin REPL (dans IntelliJ Tools -> Kotlin -> Kotlin REPL)
-- [Projet Java starter](https://github.com/vincent314/kotlin-starter-project) 
+- [Projet Java starter](https://github.com/vincent314/kotlin-starter-project) Projet Gradle clé-en-main
+
+## Liens
+
+- [https://kotlinlang.org/](https://kotlinlang.org/) Site officiel Kotlin
+- [https://kotlin.link/](https://kotlin.link/) Énorme liste de liens
+- [Twitter @Kotlin](https://twitter.com/kotlin)
+- [Keynote 2018](https://www.youtube.com/watch?v=PsaFVLr8t4E) La philosophie derrière Kotlin et les nouveautés de la v1.3

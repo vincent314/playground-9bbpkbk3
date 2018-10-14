@@ -466,7 +466,15 @@ fun main(vararg args:String){
 }
 ```
 
-## Alias
+## Type aliases
+
+Avec la généricité, arrivent les types de longueur kilométrique. Le mot clé `typealias` permet de définir un alias à des types trop complexes.
+
+```kotlin
+typealias SpecialList<T> = MutableList<Map<String, List<T>>>
+val myList:SpecialList<Long> = mutableListOf()
+myList.add(mapOf("Fibonacci" to listOf(1L,3L,5L,8L)))
+```
 
 ## Exercice StarTrek
 
