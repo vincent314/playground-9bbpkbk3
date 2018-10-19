@@ -3,7 +3,7 @@
 ## Déclaration et instanciation
 
 Les méthodes et attributs sont par défaut **public**. Des getters (`val` / `var`) et setters (`var`) sont
-générés pour les attributs. Les méthodes
+générés pour les attributs.
 
 ```kotlin runnable
 class User{
@@ -79,7 +79,7 @@ fun main(args:Array<String>){
 
 ## Héritage
 
-**les classes sont `final` par défaut.** Pour qu'une classe hérite d'une classe parente, cette dernière doit être taggé `open
+**Les classes sont `final` par défaut.** Pour qu'une classe hérite d'une classe parente, cette dernière doit être taggée `open`
 
 ```kotlin runnable
 open class Mother{
@@ -101,7 +101,8 @@ fun  main(args:Array<String>) {
 
 En plus des accesseurs, Kotlin peut générer les méthodes `equals`, `hashcode`, `toString` et `clone`, bien pratiques pour
 les classes de modèle ou **data classes**. C'est une fonctionnalité très similaire à l'annotation `@Data` de **Lombok**.
-Attention: les data classes fonctionnent mal avec l'héritage, 
+
+**Attention**: les data classes fonctionnent mal avec l'héritage, 
 
 ```kotlin runnable
 data class Person( var firstName:String, var lastName:String, var userCode:String)
@@ -259,7 +260,7 @@ fun main(vararg args:String){
 }
 ```
 
-## Surcharge d'opérateurs
+## Surcharge d'opérateurs et conventions
 
 Avec le mot clé `operator`, nous pouvons surcharger les opérateurs usuels pour les utiliser avec nos propres classes, 
 en implémentant les méthodes suivantes :
@@ -453,13 +454,11 @@ inline fun <T, R> with(receiver: T, block: T.() -> R): R
 ```kotlin runnable
 // { autofold
 import java.io.StringWriter
-import kotlin.math.PI
-import kotlin.math.cos
 // }
 
 fun main(vararg args:String){
     println(with(StringWriter()){
-        val result = cos(PI / 4)
+        val result = Math.cos(Math.PI / 4)
         append("cos(π/4)=")
         append(result.toString())
     })
@@ -468,7 +467,7 @@ fun main(vararg args:String){
 
 ## Type aliases
 
-Avec la généricité, arrivent les types de longueur kilométrique. Le mot clé `typealias` permet de définir un alias à des types trop complexes.
+Avec la généricité, arrivent les types de longueur kilométrique. Le mot clé `typealias` permet de simplifier et définir un alias à des types trop complexes.
 
 ```kotlin
 typealias SpecialList<T> = MutableList<Map<String, List<T>>>

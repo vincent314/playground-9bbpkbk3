@@ -7,6 +7,7 @@ La syntaxe est très inspirée de Java, avec toutefois quelques particularités 
 - fichiers `.kt`
 - pas de `;`
 - déclaration de variables avec `val` / `var`
+- typage *postfixé*
 - déclaration des fonctions avec `fun`
 - les fonctions sont des **entités de première classe**, au même titre que les classes
 - pas de `new` pour appeler un constructeur

@@ -1,3 +1,5 @@
+/lib
+/out
 /.idea
 *.iml
 kotlin-project/target
