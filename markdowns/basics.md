@@ -249,6 +249,14 @@ fun fail(): Nothing {
 }
 ```
 
+Cependant, pour l'interoperabilité avec Java, nous pouvons indiquer que notre fonction envoi une exception avec l'annotation `@Throws`. Le code Java
+appelant devra alors l'inclure dans un `try`/`catch`.
+
+```kotlin
+@Throws(NumberFormatException::class)
+fun parse(str:String): Int = str.toInt()
+```
+
 ## Fonctions et lambda
 
 Les fonctions et méthodes sont déclarées sous la forme `fun name(arg1:T, arg2:U):V { ... }`. 
@@ -298,6 +306,72 @@ fun main(vararg args: String) {
     println(join(*values))
 }
 ```
+
+# Quizz
+
+## Question 1
+
+```kotlin
+var a = 3
+a = "Hello"
+println(a) 
+```
+
+?[Quel est le contenu de a]
+-[ ] 3
+-[ ] Hello
+-[X] Une erreur de compilation
+
+## Question 2
+
+```kotlin
+val value = 42
+val regex = """\d\W$value"""
+println(regex) 
+```
+
+?[Quel est le contenu de regex]
+-[X] \d\W42
+-[ ] \d\W$value
+-[ ] Erreur de compilation : Illegal escape: '\d' Illegal escape: '\W'
+
+## Question 3
+
+```kotlin
+fun upper(str:String? = "default") = str.toUpperCase()
+```
+
+?[Quel est le résultat de upper()]
+-[ ] DEFAULT
+-[ ] null
+-[ ] NULL
+-[X] Erreur de compilation
+
+## Question 4
+```kotlin
+// Fichier monpackage.MaFonction.kt
+fun hello() = println("Hello")
+```
+
+?[Depuis Java, comment appelle t-on la fonction hello() ?]
+-[ ] monpackage.hello()
+-[ ] monpackage.MaFonction.hello()
+-[X] monpackage.MaFonctionKt.hello()
+-[ ] monpackage.MaFonctionKt.Companion.hello()
+
+## Question 5
+
+```kotlin
+val a = "2048"
+val b = 2048.toString()
+println("${a == b} ${a === b}")
+```
+
+$[Qu'affiche ce code ?]
+-[ ] false false
+-[ ] false true
+-[X] true false
+-[ ] true true
 
 # Exercices
  

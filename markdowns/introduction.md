@@ -32,7 +32,7 @@ Même si Kotlin est surtout un language de la JVM, au même titre que **JAVA**, 
 La syntaxe est plus riche que la syntaxe Java ou Javascript avec de nombreux nouveaux mots clés : `is`, `as`, `override`, `by`, `when` …
 Pas de panic, il est toujours possible d'utiliser la syntaxe ```` s'il y a un conflit avec vos variables.
 
-No magic ! Le language apporte nativement beaucoup de *sucre syntaxique* et prend en charge de nombreux pattern
+**No magic !** Le language apporte nativement beaucoup de *sucre syntaxique* et prend en charge de nombreux pattern
 de programmation usuels (singletons, data classes, délégation, programmation fonctionnelle, null safety …).
 
 Le code Kotlin, dépourvu du code superflux, est plus condensé et plus lisible par rapport à Java.
@@ -44,13 +44,43 @@ Si on est curieux, on peut **visualiser le code équivalent JAVA** (Kotlin -> By
 - [https://tech.io](https://tech.io) Tester Kotlin dans ce tutoriel
 - [IntelliJ CE / Ultimate](https://www.jetbrains.com/idea/download/), [Android Studio](https://developer.android.com/studio/)
 - [https://play.kotlinlang.org](https://play.kotlinlang.org) Editer et exécuter du code Kotlin
-- [https://try.kotlinlang.org](https://try.kotlinlang.org) Tutoriaux et exercices en ligne
+- [https://play.kotlinlang.org/koans/overview](https://play.kotlinlang.org/koans/overview) Tutoriaux et exercices en ligne
 - Kotlin REPL (dans IntelliJ Tools -> Kotlin -> Kotlin REPL)
 - [Projet Java starter](https://github.com/vincent314/kotlin-starter-project) Projet Gradle clé-en-main
 
 ## Liens
 
-- [https://kotlinlang.org/](https://kotlinlang.org/) Site officiel Kotlin
+- [https://kotlinlang.org/](https://kotlinlang.org/) Site officiel Kotlin et documentation
 - [https://kotlin.link/](https://kotlin.link/) Énorme liste de liens
 - [Twitter @Kotlin](https://twitter.com/kotlin)
 - [Keynote 2018](https://www.youtube.com/watch?v=PsaFVLr8t4E) La philosophie derrière Kotlin et les nouveautés de la v1.3
+- [MOOC Coursera "Kotlin For Java Developers"](https://www.coursera.org/learn/kotlin-for-java-developers)
+
+## Quizz
+
+?[Kotlin est le dernier language universitaire à la mode]
+-[ ] Oui
+-[X] Non
+
+?[Kotlin est un language dédié à Android]
+-[ ] Oui
+-[X] Non
+
+?[Kotlin est une surcouche à JAVA]
+-[ ] Oui
+-[X] Non
+
+?[Le compilateur Kotlin produit]
+-[X] du bytecode JVM
+-[ ] du Java
+-[X] du Javascript
+-[ ] du XML
+
+?[Kotlin est un language fonctionnel]
+-[X] Oui
+-[ ] Non
+
+?[Je peux intégrer du Kotlin dans un projet Java 6+ existant]
+-[X] Oui
+-[ ] Non
+-[ ] Ça dépend …
