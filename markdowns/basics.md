@@ -151,7 +151,7 @@ var nonNullable: String = ""
 var nonNullable: String = null // erreur de compilation
 ```
 
-Avec les types non-nullable, par définition, ne pourront pas être **null**, finis les `if(item == null){…}` !
+Les types non-nullable, par définition, ne pourront pas être **null**, finis les `if(item == null){…}` !
 
 Pour les types nullable, un arsenal d'opérateurs permettent de ne pas casser le flux de lecture du code.
 
@@ -166,6 +166,9 @@ fun main(args:Array<String>) {
     println(value!!.toUpperCase()) // NPE !
 }
 ```
+
+Sous le capot, les types nullables ne sont pas *wrappés* avec des classes `Optional`, mais annotés par `@Nullable` et `@NotNull`,
+ce qui améliore les performances. 
 
 ## les structures de contrôle
 
@@ -335,7 +338,21 @@ println(regex)
 -[ ] \d\W$value
 -[ ] Erreur de compilation : Illegal escape: '\d' Illegal escape: '\W'
 
+
 ## Question 3
+
+```kotlin
+var message:String? = "Message"
+var length = message?.length
+```
+
+$[Quel est le type de length ?]
+-[ ] Any
+-[ ] Int
+-[X] Int?
+-[ ] Erreur de compilation
+
+## Question 4
 
 ```kotlin
 fun upper(str:String? = "default") = str.toUpperCase()
@@ -347,7 +364,7 @@ fun upper(str:String? = "default") = str.toUpperCase()
 -[ ] NULL
 -[X] Erreur de compilation
 
-## Question 4
+## Question 5
 ```kotlin
 // Fichier monpackage.MaFonction.kt
 fun hello() = println("Hello")
@@ -359,7 +376,7 @@ fun hello() = println("Hello")
 -[X] monpackage.MaFonctionKt.hello()
 -[ ] monpackage.MaFonctionKt.Companion.hello()
 
-## Question 5
+## Question 6
 
 ```kotlin
 val a = "2048"
@@ -372,6 +389,7 @@ $[Qu'affiche ce code ?]
 -[ ] false true
 -[X] true false
 -[ ] true true
+-[ ] Erreur de compilation
 
 # Exercices
  

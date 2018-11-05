@@ -475,7 +475,52 @@ val myList:SpecialList<Long> = mutableListOf()
 myList.add(mapOf("Fibonacci" to listOf(1L,3L,5L,8L)))
 ```
 
-## Exercice StarTrek
+## Quizz
+
+### Question 1
+
+```kotlin
+class Parent{
+    init {
+        println("Hello from Parent")
+    }
+}
+
+class Child:Parent(){
+    init {
+        println("Hello from Child")
+    }
+}
+```
+
+?[Qu'affiche la création de Child()]
+-[ ] Hello from Child
+-[ ] Hello from Parent\nHello from Child
+-[X] Erreur de compilation
+
+
+
+## Exercices
+
+### unwrap
+
+Écrire la fonction d'extension `unwrap` qui convertit un `Optional` en type nullable
+
+```kotlin runnable
+import java.util.Optional
+
+fun <T> Optional<T>.unwrap():T? {
+    TODO()
+}
+
+fun main(varar params:String){
+    println(Optional.ofNullable(null).unwrap())
+    println(Optional.of("message").unwrap())
+}
+```
+
+
+### Startrek
 
 Créer le modèle métier suivant :
 
