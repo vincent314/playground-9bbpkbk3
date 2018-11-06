@@ -4,6 +4,9 @@ On retrouve les grandes catégories de collections en Kotlin : `List`, `Set` et 
 
 Dans un soucis de performance, Kotlin distingue les collections **mutables** et **immutables**.
 
+Il est fortement conseillé de bien connaître les nombreuses fonctions d'extension que la bibliothèque standard Kotlin
+fournit pour les collections, de part leur utilité, leur fréquence d'utilisation et la quantité de code qu'elles économisent !
+
 ## Création
 
 La librairie standard possède les fonctions `listOf(…)`, `setOf(…)` et `mapOf(…)` pour créer des collections immutables,
@@ -54,3 +57,19 @@ fun main(vararg args: String) {
 }
 ```
 
+## Quizz
+
+### Question 1
+
+```kotlin
+val value =((0..5) zip (0 until 6).reversed()) 
+        .map { (left, right) -> left - right }
+        .sum()
+```
+
+?[Quelle est la valeur de value ?]
+-[ ] -6
+-[X] 0
+-[ ] 30
+-[ ] NaN
+-[ ] Erreur de compilation

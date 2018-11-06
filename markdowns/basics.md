@@ -112,6 +112,17 @@ fun main(vararg args:String) {
 }
 ```
 
+`is` permet de tester le type d'une variable (cf. `instanceof` de Java). Intervient alors le **SmartCast** dans un bloc `if` ou `when` par exemple !
+
+```kotlin runnable
+fun main(vararg args:String){
+    val s = "MESSAGE"
+    if(s is String){
+        println(s.length) // smartcast : pas de (s as String).length
+    }
+}
+```
+
 ## Égalité
 
 L'opérateur `==` (double-égale) prend le sens du `.equals()` de Java.
@@ -260,23 +271,9 @@ appelant devra alors l'inclure dans un `try`/`catch`.
 fun parse(str:String): Int = str.toInt()
 ```
 
-## Fonctions et lambda
+## Fonctions
 
 Les fonctions et méthodes sont déclarées sous la forme `fun name(arg1:T, arg2:U):V { ... }`. 
-
-Les **lambda expressions** sont déclarées sous la forme `val name: (T, U) -> V = { arg1, arg2 -> ... }`.
-
-Dans une lambda avec un paramètre unique, celui peut alors être omis et se nomme `it`. On n'utilise pas le mot clé `return` pour la valeur de retour d'une lambda.
-
-Si le dernier paramètre d'une fonction est une lambda expression, elle peut être sortie de la liste de paramètres de l'appel.
-
-```kotlin runnable
-fun main(args:Array<String>){
-    println((0..10).map { it * 2 })
-    // est équivalent à :
-    println((0..10).map({ value -> value * 2 }))
-}
-```
 
 On peut spécifier des **paramètres par défaut** très simplement, par exemple `fun getWeather(date:LocalDate=LocalDate.now()){}`. 
 Cette fonction pourra être appelée avec `getWeather()`
@@ -301,7 +298,7 @@ fun square(a:String) = a * a
 Comme en Java, nous pouvons spécifier des **arguments variables** avec le mot clé `vararg`. Pour passer un tableau ou une collection
 à un argument variable, il suffit de le **déstructurer** avec `*`
 
-```kotlin
+```kotlin runnable
 fun join(vararg values: Int) = values.joinToString(",")
 
 fun main(vararg args: String) {
@@ -309,6 +306,23 @@ fun main(vararg args: String) {
     println(join(*values))
 }
 ```
+
+## Lambdas
+
+Les **lambda expressions** sont déclarées sous la forme `val name: (T, U) -> V = { arg1, arg2 -> ... }`.
+
+Dans une lambda avec un paramètre unique, celui peut alors être omis et se nomme `it`. On n'utilise pas le mot clé `return` pour la valeur de retour d'une lambda.
+
+Si le dernier paramètre d'une fonction est une lambda expression, elle peut être sortie de la liste de paramètres de l'appel.
+
+```kotlin runnable
+fun main(args:Array<String>){
+    println((0..10).map { it * 2 })
+    // est équivalent à :
+    println((0..10).map({ value -> value * 2 }))
+}
+```
+
 
 # Quizz
 
@@ -390,6 +404,21 @@ $[Qu'affiche ce code ?]
 -[X] true false
 -[ ] true true
 -[ ] Erreur de compilation
+
+## Question 7
+
+```kotlin
+val value = "Message"
+println(value as? Int)
+println(value as Int?)
+```
+
+$[Qu'affiche ce code ?]
+- [ ] Message null
+- [ ] null null
+- [ ] ClassCastException
+- [X] null ClassCastException
+- [ ] Erreur de compilation
 
 # Exercices
  
