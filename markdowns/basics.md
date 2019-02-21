@@ -360,7 +360,7 @@ var message:String? = "Message"
 var length = message?.length
 ```
 
-$[Quel est le type de length ?]
+?[Quel est le type de length ?]
 -[ ] Any
 -[ ] Int
 -[X] Int?
@@ -398,7 +398,7 @@ val b = 2048.toString()
 println("${a == b} ${a === b}")
 ```
 
-$[Qu'affiche ce code ?]
+?[Qu'affiche ce code ?]
 -[ ] false false
 -[ ] false true
 -[X] true false
@@ -413,7 +413,7 @@ println(value as? Int)
 println(value as Int?)
 ```
 
-$[Qu'affiche ce code ?]
+?[Qu'affiche ce code ?]
 - [ ] Message null
 - [ ] null null
 - [ ] ClassCastException
