@@ -181,6 +181,29 @@ fun main(vararg args: String) {
     }
     anonymousClazz.doSomething()
 }
+```
+
+## Fonctions d'extension
+
+Les fonctions d'extensions sont une notion important en Kotlin : elles permettent d'étendre facilement les fonctionnalités 
+d'une classe à l'extérieur de celle-ci. 
+
+
+Au sein de cette **fonction d'extension**, nous avons accès aux attributs membres de la classe en passant par la variable `this`
+
+```kotlin runnable
+// { autofold
+import java.time.Instant
+import java.time.LocalDate
+import java.time.ZoneId
+import java.util.Date
+// }
+
+fun Date.toLocalDate(): LocalDate = Instant.ofEpochMilli(this.time).atZone(ZoneId.systemDefault()).toLocalDate()
+
+fun main(vararg args:String){
+    println(Date().toLocalDate())
+}
 ``` 
 
 ## Companion objects
@@ -202,30 +225,29 @@ fun main(vararg args:String){
 }
 ```
 
+Les **companion objects** sont plus intéressants d'un point de vue du design d'application, car ils peuvent étendre et implémenter d'autres classes/interfaces.
+On peut aussi associer une fonction d'extension aux **companion objects** :
+
+```kotlin runnable
+class A(){
+    companion object{
+        fun hello() = println("Hello")
+    }
+}
+
+fun A.Companion.bye() = println("Bye")
+
+fun main(vararg args:String){
+    A.hello()
+    A.bye()
+}
+```
+
 Cependant, depuis Java (voir la décompilation de la classe), l'appel devra se faire ainsi `HasStaticMembers.Companion.doSomething()`. 
-Pour les utilisateurs Java de votre librairie, ajoutez l'annotation `@JvmStatic` à vos membres statiques `HasStaticMembers.doSomething()` 
+Pour les utilisateurs Java de votre librairie, ajoutez l'annotation `@JvmStatic` à vos membres `HasStaticMembers.doSomething()` 
 
 **Exercice** : Comparer les deux versions Java générées avec ou sans `@JvmStatic`
 
-## Fonctions d'extension
-
-Sans avoir à créer une nouvelle classe pour étendre la liste de méthodes d'une classe, nous pouvons créer des **fonctions d'extension**.
-Au sein de cette **fonction d'extension**, nous avons accès aux attributs membres de la classe en passant par la variable `this`
-
-```kotlin runnable
-// { autofold
-import java.time.Instant
-import java.time.LocalDate
-import java.time.ZoneId
-import java.util.Date
-// }
-
-fun Date.toLocalDate(): LocalDate = Instant.ofEpochMilli(this.time).atZone(ZoneId.systemDefault()).toLocalDate()
-
-fun main(vararg args:String){
-    println(Date().toLocalDate())
-}
-``` 
 
 ## Fonctions infix
 
